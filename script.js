@@ -2,10 +2,10 @@ function searchBooks() {
     const searchInput = document.getElementById('searchInput').value;
     const resultsDiv = document.getElementById('results');
     
-    // Clear previous results
+    
     resultsDiv.innerHTML = '';
     
-    // Google Books API endpoint
+    
     const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(searchInput)}`;
     
     fetch(apiUrl)
