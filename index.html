@@ -5,48 +5,11 @@
 </head>
 <body>
     <h1>Book Search</h1>
-    
     <input type="text" id="searchInput" placeholder="Enter book title">
     <button onclick="searchBooks()">Search</button>
-
+    
     <div id="results"></div>
- 
-    <script>
-        function searchBooks() {
-            const searchTerm = document.getElementById('searchInput').value;
-            const resultsDiv = document.getElementById('results');
-            
-        
-            resultsDiv.innerHTML = '';
 
-            //Fetching the data from google
-            fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.items && data.items.length > 0) {
-                        data.items.forEach(book => {
-                            const bookInfo = book.volumeInfo;
-                            const title = bookInfo.title;
-                            const authors = bookInfo.authors ? bookInfo.authors.join(', ') : 'Unknown Author';
-                            
-                            //To create and append book information
-                            const bookElement = document.createElement('div');
-                            bookElement.innerHTML = `
-                                <h3>${title}</h3>
-                                <p>By: ${authors}</p>
-                                <hr>
-                            `;
-                            resultsDiv.appendChild(bookElement);
-                        });
-                    } else {
-                        resultsDiv.innerHTML = '<p>No books found</p>';
-                    }
-                })
-                .catch(error => {
-                    resultsDiv.innerHTML = '<p>Error fetching books</p>';
-                    console.error('Error:', error);
-                });
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
