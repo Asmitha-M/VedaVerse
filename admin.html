@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Search Admin</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        h2 {
+            color: #444;
+            margin-bottom: 15px;
+        }
+
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input, select, button {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 8px 15px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .upload-form {
+            text-align: center;
+        }
+
+        .file-area {
+            border: 2px dashed #ddd;
+            padding: 20px;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .previous-uploads {
+            list-style: none;
+            padding: 0;
+        }
+
+        .previous-uploads li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Book Search Admin</h1>
+
+        <div class="section">
+            <h2>Search Files</h2>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search in uploaded files...">
+                <button onclick="searchFiles()">Search</button>
+            </div>
+            <table id="resultsTable">
+                <thead>
+                    <tr>
+                        <th>Filename</th>
+                        <th>Upload Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsBody"></tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Upload Files</h2>
+            <form id="uploadForm" class="upload-form">
+                <div class="file-area" onclick="document.getElementById('fileInput').click()">
+                    <input type="file" id="fileInput" accept=".jpg, .jpeg, .pdf" style="display: none;">
+                    <p>Click to select or drag and drop files here</p>
+                    <p class="file-info">Accepted formats: JPG, PDF</p>
+                </div>
+                <input type="text" id="fileName" placeholder="File name (optional)">
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+
+        <div class="section">
+            <h2>Previous Uploads</h2>
+            <ul class="previous-uploads">
+                <li>
+                    <span>document1.pdf</span>
+                    <div>
+                        <button onclick="deleteFile('document1.pdf')" style="background-color: #f44336;">Delete</button>
+                    </div>
+                </li>
+                <li>
+                    <span>profile_image.jpg</span>
+                    <div>
+                        <button onclick="deleteFile('profile_image.jpg')" style="background-color: #f44336;">Delete</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
